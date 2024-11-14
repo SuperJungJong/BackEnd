@@ -2,7 +2,8 @@ rootProject.name = "homes"
 
 include(
     "homes-apt",
-    "logging"
+    "logging",
+    "swagger",
 )
 
 pluginManagement {
