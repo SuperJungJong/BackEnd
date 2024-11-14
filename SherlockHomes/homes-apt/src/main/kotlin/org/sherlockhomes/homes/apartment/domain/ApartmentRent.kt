@@ -1,0 +1,38 @@
+package org.sherlockhomes.homes.apartment.domain
+
+import java.time.LocalDateTime
+
+class ApartmentRent (
+    val aptDong: String? = null,
+    val aptNm: String,
+    val aptSeq: String,
+    val bonbun: Int,
+    val bubun: Int,
+    val buildYear: Int,
+    val buyerGbn: String? = null,
+    val cdealDay: String? = null,
+    val cdealType: String? = null,
+    val dealAmount: String,
+    val dealDay: Int,
+    val dealMonth: Int,
+    val dealYear: Int,
+    val dealingGbn: String? = null,
+    val estateAgentSggNm: String? = null,
+    val excluUseAr: Double,
+    val floor: Int,
+    val jibun: Int,
+    val landCd: Int,
+    val landLeaseholdGbn: String,
+    val rgstDate: String?,
+    val roadNm: String,
+    val roadNmBonbun: Int,
+    val roadNmBubun: Int,
+    val roadNmCd: Int,
+    val roadNmSeq: Int,
+    val roadNmSggCd: Int,
+    val roadNmbCd: Int,
+    val sggCd: Int,
+    val slerGbn: String,
+    val umdCd: Int,
+    val umdNm: String,
+)
