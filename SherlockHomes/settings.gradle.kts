@@ -3,6 +3,9 @@ rootProject.name = "homes"
 include(
     "homes-apt",
     "homes-mono",
+    "homes-user",
+    "homes-map",
+
     "logging",
     "swagger",
 )
