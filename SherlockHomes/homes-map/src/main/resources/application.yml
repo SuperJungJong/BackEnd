@@ -1,0 +1,30 @@
+spring.application.name: SherlockHomes
+spring.profiles.active: local
+spring:
+  config:
+    import:
+      - logging.yml
+      - map-db.yml
+        
+server:
+  port: 8085
+---
+spring.config.activate.on-profile: local
+
+
+---
+spring.config.activate.on-profile: local-dev
+
+
+---
+spring.config.activate.on-profile: dev
+
+
+---
+spring.config.activate.on-profile: staging
+
+
+---
+spring.config.activate.on-profile: live
+
+

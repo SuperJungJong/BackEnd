@@ -11,3 +11,4 @@ class SherlockHomesApplication
 fun main(args: Array<String>) {
     runApplication<SherlockHomesApplication>(*args)
 }
+
