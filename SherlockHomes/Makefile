@@ -11,11 +11,11 @@ docker-build-apt:
 
 docker-build-mono:
 	@echo 단다가구 서버 빌드
-	@docker build --platform linux/amd64 -t rnrmf/homes-apt ./homes-mono
+	@docker build --platform linux/amd64 -t rnrmf/homes-mono ./homes-mono
 
 docker-build-map:
 	@echo 지도 서버 빌드
-	@docker build --platform linux/amd64 -t rnrmf/homes-apt ./homes-map
+	@docker build --platform linux/amd64 -t rnrmf/homes-map ./homes-map
 
 
 docker-build-all:
