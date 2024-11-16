@@ -5,6 +5,7 @@ include(
     "homes-mono",
     "homes-user",
     "homes-map",
+    "homes-db",
 
     "logging",
     "swagger",

@@ -1,0 +1,25 @@
+networks:
+  homes-db-network:
+    driver: bridge
+
+services:
+  legal-dong:
+    container_name: legal-dong
+    image: mysql:8.0.30
+    volumes:
+      - ./db/legalDong/conf.d:/etc/mysql/conf.d
+      - ./db/legalDong/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=map
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    networks:
+      - homes-db-network
