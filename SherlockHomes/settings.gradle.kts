@@ -6,6 +6,8 @@ include(
     "homes-user",
     "homes-map",
     "homes-db",
+    "storage",
+    "storage:db-jpa",
 
     "logging",
     "swagger",
