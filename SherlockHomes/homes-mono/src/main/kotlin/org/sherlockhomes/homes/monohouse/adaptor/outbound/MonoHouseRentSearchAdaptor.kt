@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import java.net.URI
 
 @Component
-class MonoHouseRentSearchAdaptor (
+class MonoHouseRentSearchAdaptor(
     private val webClient: WebClient
 ) : MonoHouseSearchPort<MonoHouseRent> {
 
@@ -41,7 +41,7 @@ class MonoHouseRentSearchAdaptor (
                 TYPE_KEY
 
         val bodyToMono = webClient.get()
-            .uri(URI( requestURI))
+            .uri(URI(requestURI))
             .retrieve()
             .bodyToMono(MonoHouseRentSearchVO.ResponseResults::class.java)
             .block()

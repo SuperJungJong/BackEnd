@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/mono")
-class MonoHouseApi (
+class MonoHouseApi(
     private val monoHouseTradeQuery: MonoHouseSearchUseCase<MonoHouseTradeVO.MonoHouseTrade>,
     private val monoHouseRentQuery: MonoHouseSearchUseCase<MonoHouseRentVO.MonoHouseRent>,
-){
+) {
 
     @Operation(summary = "단독/다가구 매매 조회")
     @GetMapping("/trade")
@@ -23,9 +23,9 @@ class MonoHouseApi (
         @RequestParam lawdCd: Int,
         @RequestParam dealYmd: Int,
     ) = monoHouseTradeQuery.getList(
-            lawdCd=lawdCd,
-            dealYmd=dealYmd
-        ).map { it.toResponse() }
+        lawdCd = lawdCd,
+        dealYmd = dealYmd
+    ).map { it.toResponse() }
 
     @Operation(summary = "단독/다가구 전월세 조회")
     @GetMapping("/rent")
@@ -33,7 +33,7 @@ class MonoHouseApi (
         @RequestParam lawdCd: Int,
         @RequestParam dealYmd: Int,
     ) = monoHouseRentQuery.getList(
-            lawdCd=lawdCd,
-            dealYmd=dealYmd
-        ).map { it.toResponse() }
+        lawdCd = lawdCd,
+        dealYmd = dealYmd
+    ).map { it.toResponse() }
 }

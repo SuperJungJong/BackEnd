@@ -16,5 +16,5 @@ class MonoHouseRentSearchService(
         monoHouseRentSearchPort.search(
             lawdCd = lawdCd,
             dealYmd = dealYmd,
-        ). map { it.toVO()}
+        ).map { it.toVO() }
 }

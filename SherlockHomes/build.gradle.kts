@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring") apply false
+    kotlin("plugin.jpa")
     id("org.springframework.boot") apply false
     id("io.spring.dependency-management")
 }
@@ -36,7 +37,6 @@ subprojects {
         implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("io.projectreactor:reactor-test")
         testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")

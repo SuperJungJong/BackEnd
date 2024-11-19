@@ -1,7 +1,6 @@
 package org.sherlockhomes.homes.apartment.application.service.trade.vo
 
 class ApartmentTradeVO {
-
     data class ApartmentTrade(
         val aptDong: String? = null,
         val aptNm: String,

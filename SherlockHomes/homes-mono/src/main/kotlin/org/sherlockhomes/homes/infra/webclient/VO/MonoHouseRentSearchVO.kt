@@ -1,7 +1,8 @@
 package org.sherlockhomes.homes.infra.webclient.VO
 
+//TODO: Domain으로 뺴기
 class MonoHouseRentSearchVO {
-    data class ResponseResults (
+    data class ResponseResults(
         val response: Response
     )
 

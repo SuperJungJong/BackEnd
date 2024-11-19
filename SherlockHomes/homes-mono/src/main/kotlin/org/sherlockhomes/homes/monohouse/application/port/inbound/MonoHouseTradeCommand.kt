@@ -1,4 +1,3 @@
 package org.sherlockhomes.homes.monohouse.application.port.inbound
 
-interface MonoHouseTradeCommand {
-}
+interface MonoHouseTradeCommand

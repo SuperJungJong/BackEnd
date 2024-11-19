@@ -4,6 +4,7 @@ spring:
   config:
     import:
       - logging.yml
+      - apt-db.yml
 ---
 spring.config.activate.on-profile: local
 
