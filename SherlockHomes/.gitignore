@@ -197,3 +197,8 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,intellij,gradle,git,java
 /homes-db/db/apt/initdb.d/insert_apt_trade.sql
+/homes-db/db/apt/initdb.d/insert_gu_count.sql
+/homes-db/temp_db/housedeals.sql
+/homes-db/temp_db/houseinfos.sql
+/homes-db/db/apt/initdb.d/houseinfos.sql
+/homes-db/db/legalDong/initdb.d/dongcodes.sql
