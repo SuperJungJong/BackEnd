@@ -1,6 +1,7 @@
 package org.sherlockhomes.homes.user.adaptor.inbound.api
 
 import io.swagger.v3.oas.annotations.Operation
+import org.sherlockhomes.homes.common.responsemodel.ResponseModel
 import org.sherlockhomes.homes.user.adaptor.inbound.api.dto.NaverSocialLoginRequestDTO
 import org.sherlockhomes.homes.user.adaptor.inbound.api.dto.SocialLoginResponseDTO
 import org.sherlockhomes.homes.user.adaptor.inbound.api.mapper.toResponse
@@ -23,18 +24,20 @@ class NaverSocialLoginApi(
     @PostMapping("/signup")
     fun signup(
         @RequestBody naverOauthCredential: NaverSocialLoginRequestDTO.Signup
-    ): SocialLoginResponseDTO.Response =
+    ): ResponseModel<SocialLoginResponseDTO.Response> = ResponseModel.of(
         socialLoginUseCase.signup(
             credential = naverOauthCredential.naverCredential.toVO(),
             userInfo = naverOauthCredential.user.toVO(),
         ).toResponse()
+    )
 
     @Operation(summary = "네이버로 로그인")
     @PostMapping("login")
     fun login(
         @RequestBody credential: NaverSocialLoginRequestDTO.NaverOauthCredential
-    ): SocialLoginResponseDTO.Response =
+    ): ResponseModel<SocialLoginResponseDTO.Response> = ResponseModel.of(
         socialLoginUseCase.login(
             credential = credential.toVO(),
         ).toResponse()
+    )
 }

@@ -1,6 +1,7 @@
 package org.sherlockhomes.homes.user.adaptor.inbound.api
 
 import io.swagger.v3.oas.annotations.Operation
+import org.sherlockhomes.homes.common.responsemodel.ResponseModel
 import org.sherlockhomes.homes.user.adaptor.inbound.api.dto.UserResponseDTO
 import org.sherlockhomes.homes.user.adaptor.inbound.api.mapper.toResponse
 import org.sherlockhomes.homes.user.application.port.inbound.UserCommand
@@ -21,8 +22,9 @@ class UserApi(
     @GetMapping
     fun getUser(
         @RequestHeader("X-UserId") userId: Long,
-    ): UserResponseDTO.Response =
+    ): ResponseModel<UserResponseDTO.Response> = ResponseModel.of(
         userQuery.getUser(userId).toResponse()
+    )
 
 //    @Operation(summary = "단일 유저 조회", description = "토큰으로 유저 조회(확인)")
 //    @GetMapping("/test")
