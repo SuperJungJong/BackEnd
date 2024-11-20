@@ -1,6 +1,7 @@
 package org.sherlockhomes.homes.monohouse.adaptor.inbound.api
 
 import io.swagger.v3.oas.annotations.Operation
+import org.sherlockhomes.homes.common.responsemodel.ResponseModel
 import org.sherlockhomes.homes.monohouse.adaptor.inbound.api.mapper.toResponse
 import org.sherlockhomes.homes.monohouse.application.port.inbound.MonoHouseSearchUseCase
 import org.sherlockhomes.homes.monohouse.application.service.rent.vo.MonoHouseRentVO
@@ -22,18 +23,22 @@ class MonoHouseApi(
     fun getTradeList(
         @RequestParam lawdCd: Int,
         @RequestParam dealYmd: Int,
-    ) = monoHouseTradeQuery.getList(
-        lawdCd = lawdCd,
-        dealYmd = dealYmd
-    ).map { it.toResponse() }
+    ) = ResponseModel.of(
+        payload = monoHouseTradeQuery.getList(
+            lawdCd = lawdCd,
+            dealYmd = dealYmd
+        ).map { it.toResponse() }
+    )
 
     @Operation(summary = "단독/다가구 전월세 조회")
     @GetMapping("/rent")
     fun getRentList(
         @RequestParam lawdCd: Int,
         @RequestParam dealYmd: Int,
-    ) = monoHouseRentQuery.getList(
-        lawdCd = lawdCd,
-        dealYmd = dealYmd
-    ).map { it.toResponse() }
+    ) = ResponseModel.of(
+        monoHouseRentQuery.getList(
+            lawdCd = lawdCd,
+            dealYmd = dealYmd
+        ).map { it.toResponse() }
+    )
 }
