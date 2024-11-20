@@ -1,10 +1,13 @@
 networks:
-  homes-network:
+  map-network:
     driver: bridge
   user-network:
     driver: bridge
   apt-network:
     driver: bridge
+  mono-network:
+    driver: bridge
+    
 services:
   legal-dong:
     container_name: legal-dong
@@ -25,7 +28,7 @@ services:
       - --collation-server=utf8mb4_unicode_ci
       - --skip-character-set-client-handshake
     networks:
-      - homes-network
+      - map-network
   user:
     container_name: user
     image: mysql:8.0.30

@@ -4,7 +4,7 @@ spring.profiles.active: local
 ---
 spring.config.activate.on-profile: local
 server:
-  port: 8081
+  port: 8082
 ---
 spring.config.activate.on-profile: local-dev
 

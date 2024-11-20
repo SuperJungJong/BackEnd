@@ -1,21 +1,61 @@
 spring.application.name: SherlockHomes
-spring.profiles.active: local
+spring.profiles.active: local-dev
 spring:
   config:
     import:
       - logging.yml
       - user-db.yml
-
+server:
+  port: 8083
 ---
 spring.config.activate.on-profile: local
-server:
-  port: 8081
+
 ---
 spring.config.activate.on-profile: local-dev
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://user:3306/user?autoReconnect=true&useUnicode=true&serverTimezone=Asia/Seoul"
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties:
+      hibernate:
+        storage_engine: innodb
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show_sql: true
+  logging.level:
+    org.hibernate.SQL: debug
 
 
 ---
 spring.config.activate.on-profile: dev
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://user:3306/user?autoReconnect=true&useUnicode=true&serverTimezone=Asia/Seoul"
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties:
+      hibernate:
+        storage_engine: innodb
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show_sql: true
+  logging.level:
+    org.hibernate.SQL: debug
 
 
 ---
