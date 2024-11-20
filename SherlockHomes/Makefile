@@ -28,7 +28,7 @@ docker-build-user:
 docker-build-all:
 	@echo 모든 서버 빌드 시작
 	@make docker-build-apt
-	@make docker-build-monod
+	@make docker-build-mono
 	@make docker-build-map
 	@make docker-build-user
 	@docker push rnrmf/homes-apt
