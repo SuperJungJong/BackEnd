@@ -1,4 +1,4 @@
-package org.sherlockhomes.homes.apartment.application.service.rent.vo
+package org.sherlockhomes.homes.apartment.application.service.vo.rent
 
 class ApartmentRentVO {
 

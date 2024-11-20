@@ -1,4 +1,4 @@
-package org.sherlockhomes.homes
+package org.sherlockhomes
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

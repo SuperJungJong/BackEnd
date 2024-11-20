@@ -2,7 +2,7 @@ package org.sherlockhomes.homes.apartment.application.service.trade
 
 import org.sherlockhomes.homes.apartment.application.port.inbound.ApartmentSearchUseCase
 import org.sherlockhomes.homes.apartment.application.port.outbound.ApartmentSearchPort
-import org.sherlockhomes.homes.apartment.application.service.trade.vo.ApartmentTradeVO
+import org.sherlockhomes.homes.apartment.application.service.vo.trade.ApartmentTradeVO
 import org.sherlockhomes.homes.apartment.domain.ApartmentTrade
 import org.sherlockhomes.homes.apartment.domain.mapper.toVO
 import org.springframework.stereotype.Component
@@ -16,5 +16,5 @@ class ApartmentTradeSearchService(
         apartmentTradeSearchPort.search(
             lawdCd = lawdCd,
             dealYmd = dealYmd,
-        ). map { it.toVO() }
+        ).map { it.toVO() }
 }

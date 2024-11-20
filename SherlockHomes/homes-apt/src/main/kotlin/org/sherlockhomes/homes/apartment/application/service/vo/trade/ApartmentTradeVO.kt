@@ -1,4 +1,4 @@
-package org.sherlockhomes.homes.apartment.application.service.trade.vo
+package org.sherlockhomes.homes.apartment.application.service.vo.trade
 
 class ApartmentTradeVO {
     data class ApartmentTrade(

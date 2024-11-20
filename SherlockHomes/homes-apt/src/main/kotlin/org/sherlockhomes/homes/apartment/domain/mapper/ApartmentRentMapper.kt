@@ -1,6 +1,6 @@
 package org.sherlockhomes.homes.apartment.domain.mapper
 
-import org.sherlockhomes.homes.apartment.application.service.rent.vo.ApartmentRentVO
+import org.sherlockhomes.homes.apartment.application.service.vo.rent.ApartmentRentVO
 import org.sherlockhomes.homes.apartment.domain.ApartmentRent
 
 

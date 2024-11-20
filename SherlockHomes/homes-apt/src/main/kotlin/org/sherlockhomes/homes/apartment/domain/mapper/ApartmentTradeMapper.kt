@@ -1,6 +1,6 @@
 package org.sherlockhomes.homes.apartment.domain.mapper
 
-import org.sherlockhomes.homes.apartment.application.service.trade.vo.ApartmentTradeVO
+import org.sherlockhomes.homes.apartment.application.service.vo.trade.ApartmentTradeVO
 import org.sherlockhomes.homes.apartment.domain.ApartmentTrade
 
 fun ApartmentTrade.toVO(): ApartmentTradeVO.ApartmentTrade =
