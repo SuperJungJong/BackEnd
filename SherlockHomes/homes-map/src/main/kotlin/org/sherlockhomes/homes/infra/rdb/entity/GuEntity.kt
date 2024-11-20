@@ -21,5 +21,4 @@ open class GuEntity(
     open var name: String = name
         protected set
 
-    protected constructor() : this(null, "", "")
 }

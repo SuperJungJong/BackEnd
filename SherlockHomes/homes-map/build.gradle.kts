@@ -6,6 +6,11 @@ tasks.getByName("jar") {
     enabled = false
 }
 
+plugins {
+    kotlin("plugin.jpa")
+    kotlin("plugin.noarg")
+}
+
 dependencies {
     implementation(project(":logging"))
     implementation(project(":swagger"))
