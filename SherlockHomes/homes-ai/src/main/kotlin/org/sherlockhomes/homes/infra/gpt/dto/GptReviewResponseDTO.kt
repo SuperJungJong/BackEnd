@@ -1,19 +1,40 @@
 package org.sherlockhomes.homes.infra.gpt.dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 class GptReviewResponseDTO {
-    data class GptReview(
-        val trafficScore: ScoreWithComment, //교통 점수
-        val cumuniteeScore: ScoreWithComment,  // 커뮤니티 시설 점수
-        val envScore: ScoreWithComment, //환경 점수 - 공원 같은거
-        val safetyScore: ScoreWithComment, // 치안 안전 점수
-        val convenienceScore: ScoreWithComment,  // 생활 편의 점수
-        val trendScore: ScoreWithComment, // 주변 핫플 점수
+    data class Response(
+
+        @get:JsonProperty(required = true, value = "standard")
+        val standard: Standard,
+
+        @get:JsonProperty(required = true, value = "total_score")
+        val totalScore: String,
+
+        @get:JsonProperty(required = true, value = "total_comment")
+        val totalComment: String
     )
 
-    data class ScoreWithComment(
+    data class Standard(
+
+        @get:JsonProperty(required = true, value = "review_list")
+        val reviewList: List<Review>
+    )
+
+    data class Review(
+        @get:JsonProperty(required = true, value = "category")
+        val category: String,
+
+        @get:JsonProperty(required = true, value = "score")
         val score: Int,
-        val plusComment: String,
-        val minusComment: String,
-        val totalComment: String,
+
+        @get:JsonProperty(required = true, value = "good")
+        val good: String,
+
+        @get:JsonProperty(required = true, value = "bad")
+        val bad: String,
+
+        @get:JsonProperty(required = true, value = "total")
+        val total: String,
     )
 }

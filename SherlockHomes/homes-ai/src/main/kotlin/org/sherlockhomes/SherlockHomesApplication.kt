@@ -1,6 +1,5 @@
 package org.sherlockhomes
 
-import org.sherlockhomes.homes.ai.adaptor.outbound.GptAdaptor
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.PropertySource

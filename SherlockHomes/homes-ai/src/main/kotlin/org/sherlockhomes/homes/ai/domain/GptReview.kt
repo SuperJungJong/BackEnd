@@ -1,24 +1,22 @@
 package org.sherlockhomes.homes.ai.domain
 
+
 data class GptReview(
-    val trafficScore: ScoreWithComment, //교통 점수
-    val cumuniteeScore: ScoreWithComment,  // 커뮤니티 시설 점수
-    val envScore: ScoreWithComment, //환경 점수 - 공원 같은거
-    val safetyScore: ScoreWithComment, // 치안 안전 점수
-    val convenienceScore: ScoreWithComment,  // 생활 편의 점수
-    val trendScore: ScoreWithComment, // 주변 핫플 점수
+    val standard: Standard,
+    val totalScore: String,
+    val totalComment: String
 ) {
 
-    data class ScoreWithComment(
-        val score: Int,
-        val plusComment: String,
-        val minusComment: String,
-        val totalComment: String,
+    data class Standard(
+        val reviewList: List<Review>
     )
 
-    data class Request(
-        val address: String,
-        val buildingName: String,
+    data class Review(
+        val category: String,
+        val score: Int,
+        val good: String,
+        val bad: String,
+        val total: String,
     )
 
 }

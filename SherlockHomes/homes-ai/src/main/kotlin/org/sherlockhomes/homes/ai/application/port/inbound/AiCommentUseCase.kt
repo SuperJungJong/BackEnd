@@ -5,8 +5,8 @@ import org.sherlockhomes.homes.ai.application.service.vo.HouseReviewVO
 
 interface AiCommentUseCase {
 
-    fun getHouseReview(reviewRequest: HouseReviewVO.Request)
-//    fun getHouseReview(reviewRequest: GptReviewVO.Request): GptReviewVO.GptReview
+    //    fun getHouseReview(reviewRequest: HouseReviewVO.Request)
+    fun getHouseReview(reviewRequest: HouseReviewVO.Request): HouseReviewVO.Response
 
     fun getRecommendHouse(recommendRequest: HouseRecommendVO.GptRecommend)
 //    fun getRecommendHouse(recommendRequest: GptRecommendVO.GptRecommend): GptRecommendVO.GptRecommend

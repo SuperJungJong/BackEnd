@@ -10,20 +10,23 @@ fun ReviewRequestDTO.GptReview.toVO() =
         buildingName = buildingName,
     )
 
-fun HouseReviewVO.GptReview.toResponse() =
+fun HouseReviewVO.Response.toResponse() =
     ReviewResponseDTO.Response(
-        trafficScore = trafficScore.toResponse(),
-        cumuniteeScore = cumuniteeScore.toResponse(),
-        envScore = envScore.toResponse(),
-        safetyScore = safetyScore.toResponse(),
-        convenienceScore = convenienceScore.toResponse(),
-        trendScore = trendScore.toResponse(),
+        standard = standard.toResponse(),
+        totalScore = totalScore,
+        totalComment = totalComment,
     )
 
-fun HouseReviewVO.ScoreWithCommentVO.toResponse() =
-    ReviewResponseDTO.ScoreWithComment(
+fun HouseReviewVO.Standard.toResponse() =
+    ReviewResponseDTO.Standard(
+        reviewList = reviewList.map { it.toResponse() }
+    )
+
+fun HouseReviewVO.Review.toResponse() =
+    ReviewResponseDTO.Review(
+        category = category,
         score = score,
-        plusComment = plusComment,
-        minusComment = minusComment,
-        totalComment = totalComment,
+        good = good,
+        bad = bad,
+        total = total,
     )
