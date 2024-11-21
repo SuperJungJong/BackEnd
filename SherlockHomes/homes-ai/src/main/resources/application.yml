@@ -1,0 +1,38 @@
+spring.application.name: SherlockHomes
+spring.profiles.active: local
+spring:
+  config:
+    import:
+      - optional:file:.env[.properties]
+      - logging.yml
+  ai:
+    openai:
+      api-key: ${GPT_KEY}
+      chat:
+        options:
+          model: ${MODEL}
+          temperature: ${TEMPERATURE}
+server:
+  port: 8086
+
+
+---
+spring.config.activate.on-profile: local
+
+
+---
+spring.config.activate.on-profile: local-dev
+
+
+---
+spring.config.activate.on-profile: dev
+
+
+---
+spring.config.activate.on-profile: staging
+
+
+---
+spring.config.activate.on-profile: live
+
+
