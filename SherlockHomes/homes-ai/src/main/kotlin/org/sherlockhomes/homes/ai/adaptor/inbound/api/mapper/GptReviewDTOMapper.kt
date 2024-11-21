@@ -1,17 +1,17 @@
 package org.sherlockhomes.homes.ai.adaptor.inbound.api.mapper
 
-import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.GptReviewRequestDTO
-import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.GptReviewResponseDTO
-import org.sherlockhomes.homes.ai.application.service.vo.GptReviewVO
+import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.ReviewRequestDTO
+import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.ReviewResponseDTO
+import org.sherlockhomes.homes.ai.application.service.vo.HouseReviewVO
 
-fun GptReviewRequestDTO.GptReview.toVO() =
-    GptReviewVO.Request(
+fun ReviewRequestDTO.GptReview.toVO() =
+    HouseReviewVO.Request(
         address = address,
         buildingName = buildingName,
     )
 
-fun GptReviewVO.GptReview.toResponse() =
-    GptReviewResponseDTO.Response(
+fun HouseReviewVO.GptReview.toResponse() =
+    ReviewResponseDTO.Response(
         trafficScore = trafficScore.toResponse(),
         cumuniteeScore = cumuniteeScore.toResponse(),
         envScore = envScore.toResponse(),
@@ -20,8 +20,8 @@ fun GptReviewVO.GptReview.toResponse() =
         trendScore = trendScore.toResponse(),
     )
 
-fun GptReviewVO.ScoreWithCommentVO.toResponse() =
-    GptReviewResponseDTO.ScoreWithComment(
+fun HouseReviewVO.ScoreWithCommentVO.toResponse() =
+    ReviewResponseDTO.ScoreWithComment(
         score = score,
         plusComment = plusComment,
         minusComment = minusComment,

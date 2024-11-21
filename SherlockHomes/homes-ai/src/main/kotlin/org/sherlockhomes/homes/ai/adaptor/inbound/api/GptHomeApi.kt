@@ -1,9 +1,9 @@
 package org.sherlockhomes.homes.ai.adaptor.inbound.api
 
-import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.GptRecommendRequestDTO
-import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.GptReviewRequestDTO
+import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.RecommendRequestDTO
+import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.ReviewRequestDTO
 import org.sherlockhomes.homes.ai.adaptor.inbound.api.mapper.toVO
-import org.sherlockhomes.homes.ai.application.port.inbound.GptServiceUseCase
+import org.sherlockhomes.homes.ai.application.port.inbound.AiCommentUseCase
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/ai/gpt")
-class GptApi(
-    private val gptServiceUseCase: GptServiceUseCase,
+class GptHomeApi(
+    private val gptServiceUseCase: AiCommentUseCase,
 ) {
 
     @PostMapping("/review")
     fun getReview(
-        @RequestBody gptReviewRequestDTO: GptReviewRequestDTO.GptReview
+        @RequestBody gptReviewRequestDTO: ReviewRequestDTO.GptReview
     ) {
         gptServiceUseCase.getHouseReview(
             reviewRequest = gptReviewRequestDTO.toVO(),
@@ -27,7 +27,7 @@ class GptApi(
 
     @PostMapping("/recommend")
     fun getRecommend(
-        @RequestBody gptRecommendRequestDTO: GptRecommendRequestDTO.GptRecommend
+        @RequestBody gptRecommendRequestDTO: RecommendRequestDTO.GptRecommend
     ) {
 //        gptServiceUseCase.getRecommendHouse()
     }

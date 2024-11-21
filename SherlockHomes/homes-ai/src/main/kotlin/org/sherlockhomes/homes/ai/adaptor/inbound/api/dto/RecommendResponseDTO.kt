@@ -1,6 +1,6 @@
 package org.sherlockhomes.homes.ai.adaptor.inbound.api.dto
 
-class GptReviewResponseDTO {
+class RecommendResponseDTO {
     data class Response(
         val trafficScore: ScoreWithComment, //교통 점수
         val cumuniteeScore: ScoreWithComment,  // 커뮤니티 시설 점수

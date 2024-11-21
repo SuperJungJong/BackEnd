@@ -1,9 +1,9 @@
 package org.sherlockhomes.homes.ai.domain.mapper
 
-import org.sherlockhomes.homes.ai.application.service.vo.GptReviewVO
+import org.sherlockhomes.homes.ai.application.service.vo.HouseReviewVO
 import org.sherlockhomes.homes.ai.domain.GptReview
 
-fun GptReviewVO.GptReview.toDomain() =
+fun HouseReviewVO.GptReview.toDomain() =
     GptReview(
         trafficScore = trafficScore.toDomain(),
         cumuniteeScore = cumuniteeScore.toDomain(),
@@ -13,7 +13,7 @@ fun GptReviewVO.GptReview.toDomain() =
         trendScore = trendScore.toDomain(),
     )
 
-fun GptReviewVO.ScoreWithCommentVO.toDomain() =
+fun HouseReviewVO.ScoreWithCommentVO.toDomain() =
     GptReview.ScoreWithComment(
         score = score,
         plusComment = plusComment,
@@ -21,7 +21,7 @@ fun GptReviewVO.ScoreWithCommentVO.toDomain() =
         totalComment = totalComment,
     )
 
-fun GptReviewVO.Request.toDomain() =
+fun HouseReviewVO.Request.toDomain() =
     GptReview.Request(
         address = address,
         buildingName = buildingName,

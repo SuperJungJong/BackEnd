@@ -1,22 +1,26 @@
 package org.sherlockhomes.homes.ai.adaptor.outbound
 
+import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.RecommendResponseDTO
+import org.sherlockhomes.homes.ai.adaptor.inbound.api.dto.ReviewResponseDTO
 import org.sherlockhomes.homes.ai.application.port.outbound.GptPort
-import org.sherlockhomes.homes.ai.application.service.vo.GptRecommendVO
-import org.sherlockhomes.homes.ai.application.service.vo.GptReviewVO
+import org.sherlockhomes.homes.ai.application.service.vo.HouseRecommendVO
+import org.sherlockhomes.homes.ai.application.service.vo.HouseReviewVO
+import org.sherlockhomes.homes.infra.gpt.Prompt.GptReviewPort
 import org.springframework.ai.chat.model.ChatModel
-import org.springframework.ai.chat.prompt.Prompt
-import org.springframework.ai.openai.OpenAiChatModel
+import org.springframework.ai.converter.BeanOutputConverter
 import org.springframework.stereotype.Component
 
 @Component
 class GptAdaptor(
-    private val chatModel: ChatModel
+    private val chatModel: ChatModel,
+    private val reviewPromptFactory: GptReviewPort<ReviewResponseDTO.Response>,
+    private val recommendPromptFactory: GptReviewPort<RecommendResponseDTO.Response>,
 ) : GptPort {
 
-    override fun getHouseReview(reviewRequest: GptReviewVO.Request) {
-        Prompt
+    override fun getHouseReview(reviewRequest: HouseReviewVO.Request) {
+        promptFactory.createPrompt()
 
-
+        val convert = BeanOutputConverter(ReviewResponseDTO::class.java).convert("asdf")
         val call = chatModel.call(
             "무조건 {" +
                     "trafficScore: {점수, 한줄평}\n" +
@@ -34,7 +38,7 @@ class GptAdaptor(
         println(call)
     }
 
-    override fun getRecommendHouse(recommendRequest: GptRecommendVO.Request) {
+    override fun getRecommendHouse(recommendRequest: HouseRecommendVO.Request) {
         TODO("Not yet implemented")
     }
 

@@ -1,7 +1,7 @@
 package org.sherlockhomes.homes.ai.application.service.vo
 
-class GptReviewVO {
-    data class GptReview(
+class HouseRecommendVO {
+    data class GptRecommend(
         val trafficScore: ScoreWithCommentVO, //교통 점수
         val cumuniteeScore: ScoreWithCommentVO,  // 커뮤니티 시설 점수
         val envScore: ScoreWithCommentVO, //환경 점수 - 공원 같은거
@@ -18,7 +18,7 @@ class GptReviewVO {
     )
 
     data class Request(
-        val address: String,
+        val Address: String,
         val buildingName: String,
     )
 }
