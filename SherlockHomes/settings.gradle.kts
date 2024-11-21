@@ -6,10 +6,11 @@ include(
     "homes-user",
     "homes-map",
     "homes-db",
+    "homes-ai",
+    
     "storage",
     "storage:db-jpa",
     "response-model",
-
     "logging",
     "swagger",
 )

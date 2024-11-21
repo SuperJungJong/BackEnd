@@ -29,6 +29,12 @@ docker-build-user:
 	@docker push rnrmf/homes-user
 	@echo 유저 끝~~
 
+docker-build-ai:
+	@echo ai 서버 빌드
+	@docker build --platform linux/amd64 -t rnrmf/homes-ai ./homes-ai
+	@docker push rnrmf/homes-ai
+	@echo ai 끝~~
+
 docker-build-all:
 	@./gradlew bootRun
 	@echo 모든 서버 빌드 시작
@@ -36,4 +42,5 @@ docker-build-all:
 	@make docker-build-mono
 	@make docker-build-map
 	@make docker-build-userss
+	@echo docker-build-ai
 	@echo 모든 거 끝~~
