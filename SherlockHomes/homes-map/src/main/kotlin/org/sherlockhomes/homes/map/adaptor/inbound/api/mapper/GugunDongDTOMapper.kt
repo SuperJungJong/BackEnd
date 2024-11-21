@@ -5,5 +5,5 @@ import org.sherlockhomes.homes.map.application.service.legaldong.vo.GugunDongVO
 
 fun GugunDongVO.Gugun.toResponse() = GugunDongResponseDTO.Response(
     gugunName = gugunName,
-    dongName = dongName,
+    name = dongName,
 )
