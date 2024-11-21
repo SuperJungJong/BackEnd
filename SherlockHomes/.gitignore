@@ -202,3 +202,5 @@ gradle-app.setting
 /homes-db/temp_db/houseinfos.sql
 /homes-db/db/apt/initdb.d/houseinfos.sql
 /homes-db/db/legalDong/initdb.d/dongcodes.sql
+/homes-apt/src/main/resources/ApiEndPoint.yml
+/homes-apt/src/main/resources/DataApiEnv.yml
