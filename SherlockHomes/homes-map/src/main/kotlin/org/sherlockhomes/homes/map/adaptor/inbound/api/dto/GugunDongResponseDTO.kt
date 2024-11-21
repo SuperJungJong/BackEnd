@@ -4,6 +4,6 @@ class GugunDongResponseDTO {
 
     data class Response(
         val gugunName: String?,
-        val dongName: String?,
+        val name: String?,
     )
 }
