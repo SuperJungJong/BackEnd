@@ -110,7 +110,7 @@ class BatchApi(
     }
 
     @Operation(summary = "전체 매매 배치 작업 ")
-    @GetMapping("/all/rent")
+    @GetMapping("/all/trade")
     fun batchAllTrade(
         @RequestParam dealYm: String,
     ) {

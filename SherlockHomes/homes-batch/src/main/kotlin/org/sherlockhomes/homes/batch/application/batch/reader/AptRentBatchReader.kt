@@ -1,5 +1,6 @@
 package org.sherlockhomes.homes.batch.application.batch.reader
 
+import org.sherloc.GuCode
 import org.sherlockhomes.homes.batch.application.port.outbound.SearchAptRentQueryPort
 import org.sherlockhomes.homes.batch.domain.AptRent
 import org.springframework.batch.item.ExecutionContext
@@ -15,10 +16,7 @@ class AptRentBatchReader(
 
     private var currentId = 0
     private var offset = 0
-    private var lawdCdList = arrayListOf(
-        "11530",
-        "51110",
-    )
+    private var lawdCdList = GuCode.dongList
     private var cur_idx = 0
     private var max_idx = lawdCdList.size
 
@@ -30,12 +28,14 @@ class AptRentBatchReader(
 
         if (cur_idx >= max_idx) throw ItemStreamException("out bound lawdCdList")
         if (dealYm == 0) dealYm = executionContext.getString("dealYm").toInt()
-
-        aptRentList = aptRentQueryPort.searchAptRent(
-            lawdCdList[cur_idx].toInt(),
-            dealYm
-        )
-
+        try {
+            aptRentList = aptRentQueryPort.searchAptRent(
+                lawdCdList[cur_idx].toInt(),
+                dealYm
+            )
+        } catch (e: Exception) {
+            println(e)
+        }
         offset = aptRentList.size
         if (executionContext.containsKey(CURRENT_ID_KEY)) {
             currentId = executionContext.getInt(CURRENT_ID_KEY)

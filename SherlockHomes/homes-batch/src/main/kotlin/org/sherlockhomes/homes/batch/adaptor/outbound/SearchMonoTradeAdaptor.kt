@@ -44,6 +44,7 @@ class SearchMonoTradeAdaptor(
             .uri(URI(requestURI))
             .retrieve()
             .bodyToMono(SearchMonoTradeResponseDTO.ResponseResults::class.java)
+            .onErrorComplete()
             .block()
 
         return bodyToMono!!.toDomain()

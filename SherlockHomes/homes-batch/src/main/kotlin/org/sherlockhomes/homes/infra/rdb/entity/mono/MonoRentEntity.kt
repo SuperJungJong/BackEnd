@@ -38,7 +38,7 @@ open class MonoRentEntity(
         protected set
     open var dong = dong
         protected set
-    open var buildYear = dong
+    open var buildYear = buildYear
         protected set
     open var contractTerm = contractTerm
         protected set

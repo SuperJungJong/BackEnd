@@ -44,6 +44,7 @@ class SearchAptRentAdaptor(
             .uri(URI(requestURI))
             .retrieve()
             .bodyToMono(SearchAptRentResponseDTO.ResponseResults::class.java)
+            .onErrorComplete()
             .block()
 
         return bodyToMono!!.toDomain()

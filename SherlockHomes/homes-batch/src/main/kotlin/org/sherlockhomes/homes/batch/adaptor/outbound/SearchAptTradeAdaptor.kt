@@ -44,6 +44,7 @@ class SearchAptTradeAdaptor(
             .uri(URI(requestURI))
             .retrieve()
             .bodyToMono(SearchAptTradeResponseDTO.ResponseResults::class.java)
+            .onErrorComplete()
             .block()
 
         return bodyToMono!!.toDomain()

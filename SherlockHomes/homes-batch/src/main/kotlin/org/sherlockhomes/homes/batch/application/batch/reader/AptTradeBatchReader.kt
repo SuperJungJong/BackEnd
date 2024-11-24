@@ -1,5 +1,6 @@
 package org.sherlockhomes.homes.batch.application.batch.reader
 
+import org.sherloc.GuCode
 import org.sherlockhomes.homes.batch.application.port.outbound.SearchAptTradeQueryPort
 import org.sherlockhomes.homes.batch.domain.AptTrade
 import org.springframework.batch.item.ExecutionContext
@@ -15,10 +16,7 @@ class AptTradeBatchReader(
 
     private var currentId = 0
     private var offset = 0
-    private var lawdCdList = arrayListOf(
-        "11530",
-        "51110",
-    )
+    private var lawdCdList = GuCode.dongList
     private var cur_idx = 0
     private var max_idx = lawdCdList.size
 
@@ -30,11 +28,14 @@ class AptTradeBatchReader(
 
         if (cur_idx >= max_idx) throw ItemStreamException("out bound lawdCdList")
         if (dealYm == 0) dealYm = executionContext.getString("dealYm").toInt()
-
-        aptTradeList = aptTradeQueryPort.searchAptTrade(
-            lawdCdList[cur_idx].toInt(),
-            dealYm
-        )
+        try {
+            aptTradeList = aptTradeQueryPort.searchAptTrade(
+                lawdCdList[cur_idx].toInt(),
+                dealYm
+            )
+        } catch (e: Exception) {
+            println(e)
+        }
 
         offset = aptTradeList.size
         if (executionContext.containsKey(CURRENT_ID_KEY)) {
