@@ -1,0 +1,25 @@
+package org.sherlockhomes.homes.batch.domain
+
+class AptRent(
+    val aptNm: String? = null,
+    val sgg: String? = null,
+    val si: String? = null,
+    val gu: String? = null,
+    val dong: String? = null,
+    val buildYear: Int? = null,
+    val contractTerm: String? = null,
+    val contractType: String? = null,
+    val dealDay: Int? = null,
+    val dealMonth: Int? = null,
+    val dealYear: Int? = null,
+    val deposit: String? = null,
+    val excluUseAr: Double? = null,
+    val floor: Int? = 0,
+    val jibun: String? = null,
+    val monthlyRent: Int? = null,
+    val preDeposit: String? = null,
+    val preMonthlyRent: Int? = 0,
+    val sggCd: Int? = null,
+    val umdNm: String? = null,
+    val useRRRight: String? = null,
+)

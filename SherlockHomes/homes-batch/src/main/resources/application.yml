@@ -1,0 +1,38 @@
+spring.application.name: SherlockHomes
+spring.profiles.active: local
+spring:
+  config:
+    import:
+      - logging.yml
+      - batch-db.yml
+
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+  jpa:
+    show-sql: true
+server:
+  port: 8090
+
+---
+spring.config.activate.on-profile: local
+
+
+---
+spring.config.activate.on-profile: local-dev
+
+
+---
+spring.config.activate.on-profile: dev
+
+
+---
+spring.config.activate.on-profile: staging
+
+
+---
+spring.config.activate.on-profile: live
+
+
