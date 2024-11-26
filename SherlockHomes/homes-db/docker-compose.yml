@@ -7,7 +7,7 @@ networks:
     driver: bridge
   mono-network:
     driver: bridge
-    
+
 services:
   legal-dong:
     container_name: legal-dong
@@ -36,7 +36,7 @@ services:
       - ./db/user/conf.d:/etc/mysql/conf.d
       - ./db/user/initdb.d:/docker-entrypoint-initdb.d
     ports:
-      - "3307:3306"
+      - "3307:3307"
     environment:
       - MYSQL_DATABASE=user
       - MYSQL_USER=test
@@ -69,3 +69,82 @@ services:
       - --skip-character-set-client-handshake
     networks:
       - apt-network
+  apt-replica:
+    container_name: apt-replica
+    image: mysql:8.0.30
+    volumes:
+      - ./db/apt-replica/conf.d:/etc/mysql/conf.d
+      - ./db/apt-replica/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3318:3306"
+    environment:
+      - MYSQL_DATABASE=apt-replica
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    networks:
+      - apt-network
+  mono:
+    container_name: mono
+    image: mysql:8.0.30
+    volumes:
+      - ./db/mono/conf.d:/etc/mysql/conf.d
+      - ./db/mono/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3309:3306"
+    environment:
+      - MYSQL_DATABASE=mono
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    networks:
+      - mono-network
+  mono-replica:
+    container_name: mono-replica
+    image: mysql:8.0.30
+    volumes:
+      - ./db/mono-replica/conf.d:/etc/mysql/conf.d
+      - ./db/mono-replica/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3319:3306"
+    environment:
+      - MYSQL_DATABASE=mono-replica
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    networks:
+      - mono-network
+  #  Batch
+  meta:
+    container_name: meta
+    image: mysql:8.0.30
+    volumes:
+      - ./db/meta/conf.d:/etc/mysql/conf.d
+      - ./db/meta/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3318:3318"
+    environment:
+      - MYSQL_DATABASE=meta
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake

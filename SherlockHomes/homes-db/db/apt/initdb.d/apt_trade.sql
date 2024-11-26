@@ -4,16 +4,16 @@ create table apt_trade
 (
 
     no          bigint not null auto_increment
-    primary key,
+        primary key,
     sgg         varchar(100) comment '시군구',
-    si         varchar(20) comment '시',
-    gu         varchar(20) comment '구',
-    dong         varchar(20) comment '동',
+    si          varchar(20) comment '시',
+    gu          varchar(20) comment '구',
+    dong        varchar(20) comment '동',
     jibun       varchar(20) comment '번지',
     apt_nm      varchar(30) comment '단지명',
     exdu_use_ar double comment '전용면적',
-    deal_y     varchar(10) comment '계약년',
-    deal_m     varchar(10) comment '계약월',
+    deal_y      varchar(10) comment '계약년',
+    deal_m      varchar(10) comment '계약월',
     deal_d      varchar(10) comment '계약일',
     deal_amount varchar(30) comment '거래금액',
     apt_dong    varchar(10) comment '동',
@@ -25,11 +25,12 @@ create table apt_trade
     special_day varchar(10) comment '해제사유발생일',
     type        varchar(10) comment '거래유형',
     middle_addr varchar(30) comment '중개사소재지',
-    key apt_nm_idx(apt_nm),
-    key gu_idx(gu),
-    key dong_idx(dong)
+    key apt_nm_idx (apt_nm),
+    key gu_idx (gu),
+    key dong_idx (dong),
+    key sgg_idx (sgg),
+    key aptNm_sgg_idx (apt_nm, sgg)
 );
-create index dong_idx on apt_trade(dong);
 -- INSERT INTO apt_trade (
 --    sgg,
 --    si,
