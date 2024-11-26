@@ -6,6 +6,7 @@ import org.sherlockhomes.homes.user.adaptor.inbound.api.dto.UserResponseDTO
 import org.sherlockhomes.homes.user.adaptor.inbound.api.mapper.toResponse
 import org.sherlockhomes.homes.user.application.port.inbound.UserCommand
 import org.sherlockhomes.homes.user.application.port.inbound.UserQuery
+import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
@@ -15,16 +16,27 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/user")
 class UserApi(
     private val userQuery: UserQuery,
-    private val userCommand: UserCommand,
+    private val kafkaTemplate: KafkaTemplate<String, String>
 ) {
 
     @Operation(summary = "단일 유저 조회", description = "토큰으로 유저 조회(확인)")
     @GetMapping
     fun getUser(
         @RequestHeader("X-UserId") userId: Long,
-    ): ResponseModel<UserResponseDTO.Response> = ResponseModel.of(
-        userQuery.getUser(userId).toResponse()
-    )
+    ): ResponseModel<UserResponseDTO.Response> {
+        kafkaTemplate.send(
+            "user-log",
+            "[user][controller] /, request (userId=${userId})"
+        )
+        kafkaTemplate.send(
+            "user-log",
+            "[user][controller] /, request (userId=${userId})"
+        )
+
+        return ResponseModel.of(
+            userQuery.getUser(userId).toResponse()
+        )
+    }
 
 //    @Operation(summary = "단일 유저 조회", description = "토큰으로 유저 조회(확인)")
 //    @GetMapping("/test")

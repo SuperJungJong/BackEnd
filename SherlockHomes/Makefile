@@ -26,7 +26,7 @@ docker-build-map:
 docker-build-user:
 	@echo 유저 서버 빌드
 	@docker build --platform linux/amd64 -t rnrmf/homes-user ./homes-user
-	@docker push rnrmf/homes-user
+	@docker push rnrmf
 	@echo 유저 끝~~
 
 docker-build-ai:

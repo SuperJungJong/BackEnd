@@ -1,11 +1,9 @@
 package org.sherlockhomes.homes.infra.rdb.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
+@Table(catalog = "apt", name = "apt_trade")
 open class AptTradeEntity(
     no: Long?,
     sgg: String,
@@ -47,7 +45,7 @@ open class AptTradeEntity(
     open var dong = dong
         protected set
 
-    var jibun = jibun
+    open var jibun = jibun
         protected set
 
     open var aptNm = aptNm
@@ -56,12 +54,15 @@ open class AptTradeEntity(
     open var exduUseAr = exduUseAr
         protected set
 
+    @Column(name = "deal_y")
     open var dealY = dealY
         protected set
 
+    @Column(name = "deal_m")
     open var dealM = dealM
         protected set
 
+    @Column(name = "deal_d")
     open var dealD = dealD
         protected set
 

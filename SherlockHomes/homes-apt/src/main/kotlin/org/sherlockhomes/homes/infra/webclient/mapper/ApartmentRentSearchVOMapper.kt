@@ -1,17 +1,17 @@
 package org.sherlockhomes.homes.infra.webclient.mapper
 
-import org.sherlockhomes.homes.apartment.domain.ApartmentRent
+import org.sherlockhomes.homes.apartment.domain.AptRent
 import org.sherlockhomes.homes.infra.webclient.VO.ApartmentRentSearchVO
 
 fun ApartmentRentSearchVO.ResponseResults.toDomain(
-): List<ApartmentRent> =
+): List<AptRent> =
     response.body.items.item.map {
         it.toDomain()
     }
 
 
 fun ApartmentRentSearchVO.Item.toDomain(
-): ApartmentRent = ApartmentRent(
+): AptRent = AptRent(
     aptNm = aptNm,
     buildYear = buildYear,
     contractTerm = contractTerm,

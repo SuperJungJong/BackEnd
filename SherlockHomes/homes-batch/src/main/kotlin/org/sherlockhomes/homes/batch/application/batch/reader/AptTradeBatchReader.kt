@@ -34,7 +34,6 @@ class AptTradeBatchReader(
                 dealYm
             )
         } catch (e: Exception) {
-            println(e)
         }
 
         offset = aptTradeList.size
@@ -61,4 +60,7 @@ class AptTradeBatchReader(
         executionContext.putInt(CURRENT_ID_KEY, currentId)
     }
 
+    override fun close() {
+        cur_idx = 0
+    }
 }

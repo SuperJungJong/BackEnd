@@ -24,7 +24,6 @@ class SearchMonoTradeAdaptor(
     lateinit var GET_MONO_HOUSE_TRADE_URI: String
 
     override fun searchMonoTrade(lawdCd: Int, dealYmd: Int): List<MonoTrade> {
-        println("검색! = 검색!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~")
         val LAWD_CD = "LAWD_CD=${lawdCd}"
         val DEAL_YMD = "DEAL_YMD=${dealYmd}"
 

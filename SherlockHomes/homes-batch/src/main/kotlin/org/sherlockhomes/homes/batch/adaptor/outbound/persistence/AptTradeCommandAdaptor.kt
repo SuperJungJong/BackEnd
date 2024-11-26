@@ -15,6 +15,5 @@ class AptTradeCommandAdaptor(
 
     override fun insertAptTradeList(aptTradeList: List<AptTrade>) {
         aptTradeRepository.saveAll(aptTradeList.map { it.toEntity() })
-        println("insertAptTradeList")
     }
 }

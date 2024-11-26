@@ -23,7 +23,6 @@ class BuildingDataQueryAdaptor(
         val format = LocalDateTime.now().minus(1, ChronoUnit.DAYS).format(
             DateTimeFormatter.ofPattern("YYYYMM")
         )
-        println(format)
         val map: MultiValueMap<String, String> = LinkedMultiValueMap()
         map.add("srhThingNo", "A")
         map.add("srhDelngSecd", "1")
@@ -44,7 +43,6 @@ class BuildingDataQueryAdaptor(
             .retrieve()
             .bodyToMono(String::class.java)
             .block()
-        println("bodyToMono = ${bodyToMono}")
 
 
 //        val restTemplate = RestTemplate()
@@ -65,7 +63,6 @@ class BuildingDataQueryAdaptor(
 //            ByteArray::class.java
 //        )
 //
-//        println("response = ${response}")
 
     }
 }

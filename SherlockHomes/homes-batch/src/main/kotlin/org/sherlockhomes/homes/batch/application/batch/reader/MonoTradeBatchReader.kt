@@ -35,7 +35,6 @@ class MonoTradeBatchReader(
                 dealYm
             )
         } catch (e: Exception) {
-            println(e)
         }
 
         offset = monoTradeList.size
@@ -48,13 +47,11 @@ class MonoTradeBatchReader(
         if (currentId >= offset) {
             cur_idx++
             if (cur_idx >= max_idx) return null
-            println("asssssssssssssssssssss")
             open(ExecutionContext())
             currentId = 0
         }
 
         val get = monoTradeList.get(currentId)
-        println("get.jibun = ${get.jibun}")
         currentId++
 
         return get
@@ -64,4 +61,7 @@ class MonoTradeBatchReader(
         executionContext.putInt(CURRENT_ID_KEY, currentId)
     }
 
+    override fun close() {
+        cur_idx = 0
+    }
 }

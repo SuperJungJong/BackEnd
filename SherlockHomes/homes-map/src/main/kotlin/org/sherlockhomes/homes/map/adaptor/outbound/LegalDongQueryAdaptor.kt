@@ -18,7 +18,6 @@ class LegalDongQueryAdaptor(
 
     @Transactional(readOnly = true)
     override fun getSiList(): List<Si> {
-        println("siRepository.findAll() = ${siRepository.findAll()}")
         return siRepository.findAll()
             .map { it.toDomain() }
 

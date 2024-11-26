@@ -1,3 +1,11 @@
 package org.sherlockhomes.homes.monohouse.application.port.inbound
 
-interface MonoHouseRentQuery
+import org.sherlockhomes.homes.monohouse.application.service.rent.vo.MonoHouseRentVO
+
+interface MonoHouseRentQuery {
+    fun getMonoRentListBySgg(
+        si: String,
+        gu: String,
+        dong: String,
+    ): List<MonoHouseRentVO.MonoHouseRent>
+}

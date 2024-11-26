@@ -1,1 +1,12 @@
 logging.config: classpath:logback/logback-${spring.profiles.active}.xml
+
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: http://localhost:29092
+      #      bootstrap-servers: http://kafka:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      batch-size: 1000000
+      properties:
+        linger.ms: 100

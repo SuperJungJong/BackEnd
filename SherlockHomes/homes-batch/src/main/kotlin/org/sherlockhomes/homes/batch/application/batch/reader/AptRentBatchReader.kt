@@ -34,7 +34,6 @@ class AptRentBatchReader(
                 dealYm
             )
         } catch (e: Exception) {
-            println(e)
         }
         offset = aptRentList.size
         if (executionContext.containsKey(CURRENT_ID_KEY)) {
@@ -60,4 +59,7 @@ class AptRentBatchReader(
         executionContext.putInt(CURRENT_ID_KEY, currentId)
     }
 
+    override fun close() {
+        cur_idx = 0
+    }
 }

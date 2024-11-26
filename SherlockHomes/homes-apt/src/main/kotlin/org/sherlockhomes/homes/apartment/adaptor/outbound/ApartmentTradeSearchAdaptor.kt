@@ -5,13 +5,15 @@ import org.sherlockhomes.homes.apartment.domain.ApartmentTrade
 import org.sherlockhomes.homes.infra.webclient.VO.ApartmentTradeSearchVO
 import org.sherlockhomes.homes.infra.webclient.mapper.toDomain
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import java.net.URI
 
 @Component
-class ApartmentTradeSearchAdaptor (
-    private val webClient: WebClient
+class ApartmentTradeSearchAdaptor(
+    private val webClient: WebClient,
+    private val kafkaTemplate: KafkaTemplate<String, String>
 ) : ApartmentSearchPort<ApartmentTrade> {
 
     @Value("\${ENCODING_KEY}")
@@ -41,11 +43,19 @@ class ApartmentTradeSearchAdaptor (
                 TYPE_KEY
 
         val bodyToMono = webClient.get()
-            .uri(URI( requestURI))
+            .uri(URI(requestURI))
             .retrieve()
             .bodyToMono(ApartmentTradeSearchVO.ResponseResults::class.java)
             .block()
 
+        kafkaTemplate.send(
+            "apt-log",
+            "[apt][adaptor][end] ApartmentTradeSearchAdaptor.search (lawdCd=${lawdCd}, dealYmd=${dealYmd})"
+        )
+        kafkaTemplate.send(
+            "all-log",
+            "[apt][adaptor][end] ApartmentTradeSearchAdaptor.search (lawdCd=${lawdCd}, dealYmd=${dealYmd})"
+        )
         return bodyToMono!!.toDomain()
     }
 }

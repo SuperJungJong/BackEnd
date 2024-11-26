@@ -12,6 +12,5 @@ class AptRentCommandAdaptor(
 ) : AptRentCommandPort {
     override fun insertAptRentList(aptRentList: List<AptRent>) {
         aptRentRepository.saveAll(aptRentList.map { it.toEntity() })
-        println("insertAptRentList")
     }
 }

@@ -7,10 +7,15 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface AptTradeRepository : JpaRepository<AptTradeEntity, Long> {
 
-    fun findAllByDong(dong: String): List<AptTradeEntity>
+    fun findAllBySiAndGuAndDong(
+        si: String,
+        gu: String,
+        dong: String,
+    ): List<AptTradeEntity>
 
-    fun findAllByAptNmOrderByDealYDescDealMDescDealDDesc(
+    fun findAllByAptNmAndSggOrderByDealYDescDealMDescDealDDesc(
         aptNm: String,
+        sgg: String,
         pageRequest: PageRequest
     ): Page<AptTradeEntity>
 }

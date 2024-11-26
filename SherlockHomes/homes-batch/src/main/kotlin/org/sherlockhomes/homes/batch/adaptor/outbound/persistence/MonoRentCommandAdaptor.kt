@@ -12,6 +12,5 @@ class MonoRentCommandAdaptor(
 ) : MonoRentCommandPort {
     override fun insertMonoRentList(monoRentList: List<MonoRent>) {
         monoRentRepository.saveAll(monoRentList.map { it.toEntity() })
-        println("insertMonoRentList")
     }
 }

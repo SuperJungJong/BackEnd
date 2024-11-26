@@ -7,6 +7,9 @@ include(
     "homes-map",
     "homes-db",
     "homes-ai",
+    "homes-batch",
+    "homes-eureka",
+    "homes-gateway",
     
     "storage",
     "storage:db-jpa",

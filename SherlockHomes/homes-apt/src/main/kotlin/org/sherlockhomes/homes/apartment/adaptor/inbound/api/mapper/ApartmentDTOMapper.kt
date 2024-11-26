@@ -2,7 +2,7 @@ package org.sherlockhomes.homes.apartment.adaptor.inbound.api.mapper
 
 import org.sherlockhomes.homes.apartment.adaptor.inbound.api.dto.ApartmentRequestDTO
 import org.sherlockhomes.homes.apartment.adaptor.inbound.api.dto.ApartmentResponseDTO
-import org.sherlockhomes.homes.apartment.application.service.vo.rent.ApartmentRentVO
+import org.sherlockhomes.homes.apartment.application.service.vo.rent.AptRentVO
 import org.sherlockhomes.homes.apartment.application.service.vo.trade.ApartmentTradeVO
 
 fun ApartmentRequestDTO.SearchRent.toVO(
@@ -17,7 +17,7 @@ fun ApartmentRequestDTO.SearchTrade.toVO(
 
 }
 
-fun ApartmentRentVO.ApartmentRent.toResponse(): ApartmentResponseDTO.RentResponse =
+fun AptRentVO.ApartmentRent.toResponse(): ApartmentResponseDTO.RentResponse =
     ApartmentResponseDTO.RentResponse(
         aptNm = aptNm,
         buildYear = buildYear,
@@ -27,6 +27,7 @@ fun ApartmentRentVO.ApartmentRent.toResponse(): ApartmentResponseDTO.RentRespons
         dealMonth = dealMonth,
         dealYear = dealYear,
         deposit = deposit,
+        sgg = sgg,
         excluUseAr = excluUseAr,
         floor = floor,
         jibun = jibun,

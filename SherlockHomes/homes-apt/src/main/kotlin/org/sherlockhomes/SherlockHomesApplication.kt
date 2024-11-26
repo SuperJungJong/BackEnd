@@ -8,6 +8,7 @@ import org.springframework.context.annotation.PropertySources
 @SpringBootApplication
 @PropertySources(
     PropertySource("classpath:DataApiEnv.yml"),
+    PropertySource("classpath:ApiEndPoint.yml"),
 )
 class SherlockHomesApplication
 

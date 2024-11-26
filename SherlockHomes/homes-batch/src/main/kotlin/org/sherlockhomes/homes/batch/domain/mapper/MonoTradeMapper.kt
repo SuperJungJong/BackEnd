@@ -37,8 +37,6 @@ fun SearchMonoTradeResponseDTO.Item.toDomain(
     val sigu = gucode.getSiGu(sggCd)
     val si = sigu?.split(" ")?.get(0)
     val gu = sigu?.split(" ")?.get(1)
-    println("si = ${si}")
-    println("gi = ${gu}")
     return MonoTrade(
         buildYear = buildYear,
         buyerGbn = buyerGbn,

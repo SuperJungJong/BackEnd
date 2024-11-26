@@ -1,36 +1,21 @@
 package org.sherlockhomes.homes.batch.adaptor.inbound
 
 import io.swagger.v3.oas.annotations.Operation
-import org.sherlockhomes.homes.batch.adaptor.outbound.BuildingDataQueryAdaptor
-import org.sherlockhomes.homes.batch.adaptor.outbound.SearchAptTradeAdaptor
-import org.sherlockhomes.homes.batch.application.port.outbound.SearchMonoTradeQueryPort
-import org.sherlockhomes.homes.batch.application.port.outbound.persistence.AptTradeCommandPort
-import org.sherlockhomes.homes.batch.application.port.outbound.persistence.MonoTradeCommandPort
-import org.sherlockhomes.homes.batch.application.service.MonoWriter
-import org.sherlockhomes.homes.batch.domain.mapper.toEntity
-import org.springframework.batch.core.JobParameter
 import org.springframework.batch.core.JobParametersBuilder
 import org.springframework.batch.core.configuration.JobRegistry
 import org.springframework.batch.core.launch.JobLauncher
-import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
+import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/api/batch")
 class BatchApi(
-    private val adp: BuildingDataQueryAdaptor,
-    private val monoTradeSearchMonoTradeQueryPort: SearchMonoTradeQueryPort,
     private val jobLauncher: JobLauncher,
     private val jobRegistry: JobRegistry,
-    private val monoTradeCommandPort: MonoTradeCommandPort,
-    private val aptTradeCommandPort: AptTradeCommandPort,
-    private val searchAptTradeAdaptor: SearchAptTradeAdaptor,
-    private val monoWriter: MonoWriter
+    private val kafkaTemplate: KafkaTemplate<String, String>
 ) {
 
 
@@ -39,6 +24,9 @@ class BatchApi(
     fun batchMonoTrade(
         @RequestParam dealYm: String,
     ) {
+        kafkaTemplate.send("batch-log", "[batch][controller][start] /mono/trade, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][start] /mono/trade, request (dealYm=${dealYm})")
+
         val toJobParameters = JobParametersBuilder()
             .addString("dealYm", dealYm)
             .toJobParameters()
@@ -47,6 +35,9 @@ class BatchApi(
             jobRegistry.getJob("monoTrade"),
             toJobParameters
         )
+
+        kafkaTemplate.send("batch-log", "[batch][controller][end] /mono/trade, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][end] /mono/trade, request (dealYm=${dealYm})")
     }
 
     @Operation(summary = "단다가구 전월세 배치 작업 ")
@@ -54,6 +45,9 @@ class BatchApi(
     fun batchMonoRent(
         @RequestParam dealYm: String,
     ) {
+        kafkaTemplate.send("batch-log", "[batch][controller][start] /mono/rent, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][start] /mono/rent, request (dealYm=${dealYm})")
+
         val toJobParameters = JobParametersBuilder()
             .addString("dealYm", dealYm)
             .toJobParameters()
@@ -62,6 +56,9 @@ class BatchApi(
             jobRegistry.getJob("monoRent"),
             toJobParameters
         )
+
+        kafkaTemplate.send("batch-log", "[batch][controller][end] /mono/rent, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][end] /mono/rent, request (dealYm=${dealYm})")
     }
 
     @Operation(summary = "아파트 매매 배치 작업 ")
@@ -69,6 +66,9 @@ class BatchApi(
     fun batchAptTrade(
         @RequestParam dealYm: String,
     ) {
+        kafkaTemplate.send("batch-log", "[batch][controller][start] /apt/trade, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][start] /apt/trade, request (dealYm=${dealYm})")
+
         val toJobParameters = JobParametersBuilder()
             .addString("dealYm", dealYm)
             .toJobParameters()
@@ -77,6 +77,9 @@ class BatchApi(
             jobRegistry.getJob("aptTrade"),
             toJobParameters
         )
+
+        kafkaTemplate.send("batch-log", "[batch][controller][end] /apt/trade, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][end] /apt/trade, request (dealYm=${dealYm})")
     }
 
     @Operation(summary = "아파트 월세 배치 작업 ")
@@ -84,6 +87,9 @@ class BatchApi(
     fun batchAptRent(
         @RequestParam dealYm: String,
     ) {
+        kafkaTemplate.send("batch-log", "[batch][controller][start] /apt/rent, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][start] /apt/rent, request (dealYm=${dealYm})")
+
         val toJobParameters = JobParametersBuilder()
             .addString("dealYm", dealYm)
             .toJobParameters()
@@ -92,6 +98,9 @@ class BatchApi(
             jobRegistry.getJob("aptRent"),
             toJobParameters
         )
+
+        kafkaTemplate.send("batch-log", "[batch][controller][end] /apt/rent, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][end] /apt/rent, request (dealYm=${dealYm})")
     }
 
     @Operation(summary = "전체 월세 배치 작업 ")
@@ -99,6 +108,9 @@ class BatchApi(
     fun batchAllRent(
         @RequestParam dealYm: String,
     ) {
+        kafkaTemplate.send("batch-log", "[batch][controller][start] /all/rent, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][start] /all/rent, request (dealYm=${dealYm})")
+
         val toJobParameters = JobParametersBuilder()
             .addString("dealYm", dealYm)
             .toJobParameters()
@@ -107,6 +119,9 @@ class BatchApi(
             jobRegistry.getJob("allRent"),
             toJobParameters
         )
+
+        kafkaTemplate.send("batch-log", "[batch][controller][end] /all/rent, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][end] /all/rent, request (dealYm=${dealYm})")
     }
 
     @Operation(summary = "전체 매매 배치 작업 ")
@@ -114,6 +129,9 @@ class BatchApi(
     fun batchAllTrade(
         @RequestParam dealYm: String,
     ) {
+        kafkaTemplate.send("batch-log", "[batch][controller][start] /all/trade, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][start] /all/trade, request (dealYm=${dealYm})")
+
         val toJobParameters = JobParametersBuilder()
             .addString("dealYm", dealYm)
             .toJobParameters()
@@ -122,6 +140,9 @@ class BatchApi(
             jobRegistry.getJob("allTrade"),
             toJobParameters
         )
+
+        kafkaTemplate.send("batch-log", "[batch][controller][end] /all/trade, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][end] /all/trade, request (dealYm=${dealYm})")
     }
 
 
@@ -130,6 +151,9 @@ class BatchApi(
     fun batchAll(
         @RequestParam dealYm: String,
     ) {
+        kafkaTemplate.send("batch-log", "[batch][controller][start] /all, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][start] /all, request (dealYm=${dealYm})")
+
         val toJobParameters = JobParametersBuilder()
             .addString("dealYm", dealYm)
             .toJobParameters()
@@ -138,5 +162,8 @@ class BatchApi(
             jobRegistry.getJob("all"),
             toJobParameters
         )
+
+        kafkaTemplate.send("batch-log", "[batch][controller][end] /all, request (dealYm=${dealYm})")
+        kafkaTemplate.send("all-log", "[batch][controller][end] /all, request (dealYm=${dealYm})")
     }
 }

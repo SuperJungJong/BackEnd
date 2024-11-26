@@ -6,10 +6,15 @@ import org.sherlockhomes.homes.apartment.domain.AptTrade
 
 interface AptTradeQuery {
     fun getAptTrade(
+        sgg: String,
         aptName: String,
         offset: Int,
         limit: Int,
     ): ListPageVO<AptTradeVO.AptTrade>
 
-    fun getAptInDong(dong: String): List<AptTradeVO.AptTrade>
+    fun getAptInDong(
+        si: String,
+        gu: String,
+        dong: String,
+    ): List<AptTradeVO.AptTrade>
 }

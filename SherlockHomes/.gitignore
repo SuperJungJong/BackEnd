@@ -204,3 +204,13 @@ gradle-app.setting
 /homes-db/db/legalDong/initdb.d/dongcodes.sql
 /homes-apt/src/main/resources/ApiEndPoint.yml
 /homes-apt/src/main/resources/DataApiEnv.yml
+/homes-batch/src/main/resources/env.yml
+/homes-batch/src/main/resources/DataApiEnv.yml
+/homes-batch/src/main/resources/ApiEndPoint.yml
+/storage/db-jpa/src/main/resources/ai-db.yml
+/storage/db-jpa/src/main/resources/apt-db.yml
+/storage/db-jpa/src/main/resources/batch-db.yml
+/storage/db-jpa/src/main/resources/map-db.yml
+/storage/db-jpa/src/main/resources/user-db.yml
+/storage/db-jpa/src/main/resources/mono-db.yml
+/homes-db/db/apt-replica/

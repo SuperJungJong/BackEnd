@@ -35,7 +35,7 @@ class MonoDBConfig {
         em.jpaVendorAdapter = HibernateJpaVendorAdapter()
 
         val properties = HashMap<String, Any?>()
-        properties["hibernate.hbm2ddl.auto"] = "create"
+        properties["hibernate.hbm2ddl.auto"] = "validate"
         properties["hibernate.show_sql"] = "true"
         properties["hibernate.physical_naming_strategy"] = CamelCaseToUnderscoresNamingStrategy::class.java.name
         properties["hibernate.implicit_naming_strategy"] = SpringImplicitNamingStrategy::class.java.name

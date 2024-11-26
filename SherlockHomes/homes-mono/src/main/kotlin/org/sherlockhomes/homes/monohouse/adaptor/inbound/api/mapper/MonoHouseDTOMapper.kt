@@ -37,6 +37,10 @@ fun MonoHouseTradeVO.MonoHouseTrade.toResponse(): MonoHouseResponseDTO.TradeResp
         slerGbn = slerGbn,
         totalFloorAr = totalFloorAr,
         umdNm = umdNm,
+        sgg = sgg,
+        si = si,
+        gu = gu,
+        dong = dong,
     )
 
 fun MonoHouseRentVO.MonoHouseRent.toResponse(): MonoHouseResponseDTO.RentResponse =
@@ -56,4 +60,8 @@ fun MonoHouseRentVO.MonoHouseRent.toResponse(): MonoHouseResponseDTO.RentRespons
         totalFloorAr = totalFloorAr,
         umdNm = umdNm,
         useRRRight = useRRRight,
+        sgg = sgg,
+        si = si,
+        gu = gu,
+        dong = dong,
     )

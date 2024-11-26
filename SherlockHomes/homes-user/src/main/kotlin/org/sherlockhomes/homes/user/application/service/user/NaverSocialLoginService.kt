@@ -9,6 +9,7 @@ import org.sherlockhomes.homes.user.application.service.user.VO.UserVO
 import org.sherlockhomes.homes.user.domain.RefreshToken
 import org.sherlockhomes.homes.user.domain.mapper.toDomain
 import org.springframework.http.HttpStatusCode
+import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.client.HttpClientErrorException
@@ -23,10 +24,19 @@ class NaverSocialLoginService(
     private val refreshTokenQueryPort: RefreshTokenQueryPort,
     private val refreshTokenCommandPort: RefreshTokenCommandPort,
     private val jwtUtil: JwtUtil,
+    private val kafkaTemplate: KafkaTemplate<String, String>
 ) : SocialLoginUseCase<NaverLoginVO.NaverOauthCredential, UserVO.Save> {
 
     @Transactional
     override fun signup(credential: NaverLoginVO.NaverOauthCredential, userInfo: UserVO.Save): SocialLoginVO.Token {
+        kafkaTemplate.send(
+            "user-log",
+            "[user][service] NaverSocialLoginService.signup"
+        )
+        kafkaTemplate.send(
+            "all-log",
+            "[user][service] NaverSocialLoginService.signup"
+        )
 
         val ci = naverSocialLoginPort.getCi(
             credential = credential.toDomain(),
@@ -55,6 +65,14 @@ class NaverSocialLoginService(
 
     @Transactional
     override fun login(credential: NaverLoginVO.NaverOauthCredential): SocialLoginVO.Token {
+        kafkaTemplate.send(
+            "user-log",
+            "[user][service] NaverSocialLoginService.login"
+        )
+        kafkaTemplate.send(
+            "all-log",
+            "[user][service] NaverSocialLoginService.login"
+        )
 
         val ci = naverSocialLoginPort.getCi(credential.toDomain())
         val user = userQueryPort.findByCi(ci)

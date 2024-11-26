@@ -15,18 +15,11 @@ class MonoTradeCommandAdaptor(
 
     @Transactional
     override fun insertMonoTradeList(monoTradeList: List<MonoTrade>) {
-        println("monoTradeRepository = ${monoTradeRepository}")
-        println("monoTradeList = ${monoTradeList}")
         monoTradeRepository.saveAll(monoTradeList.map { it.toEntity() })
         val toEntity = monoTradeList.get(0).toEntity()
-        println("toEntity = ${toEntity.buyerGbn}")
-        println("toEntity = ${toEntity.jibun}")
-        println("toEntity = ${toEntity.si}")
 
         monoTradeRepository.saveAndFlush(toEntity)
 
         val findAll = monoTradeRepository.findAll()
-        println("findAll = ${findAll}")
-        println("끝~~~~~~~~~~~~~~~~~~")
     }
 }

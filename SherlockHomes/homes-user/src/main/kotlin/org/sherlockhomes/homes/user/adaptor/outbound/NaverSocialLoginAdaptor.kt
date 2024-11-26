@@ -1,5 +1,6 @@
 package org.sherlockhomes.homes.user.adaptor.outbound
 
+import io.jsonwebtoken.Header
 import org.sherlockhomes.homes.user.application.port.outbound.NaverSocialLoginPort
 import org.sherlockhomes.homes.user.domain.NaverLoginResponse
 import org.sherlockhomes.homes.user.domain.NaverOauthCredential
@@ -48,7 +49,7 @@ class NaverSocialLoginAdaptor(
                     .with("code", credential.code)
                     .with("state", credential.state)
             )
-            .header("Content-Type", "application/s-www-form-urlencoded;charset=utf-8")
+            .header("Content-Type", "application/x-www-form-urlencoded")
             .retrieve()
             .bodyToMono(NaverLoginResponse.tokens::class.java)
             .onErrorMap { HttpTimeoutException("[Time Out 예외] 네이버 AccessToken") }
