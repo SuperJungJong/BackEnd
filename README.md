@@ -1,7 +1,3 @@
-# 백엔드 최종 결과물
-![image](https://github.com/user-attachments/assets/ec5fe7a2-1f37-4430-a67d-7ebf0dc9e39a)
-
-
 # 주요 기능
 
 1. 필터 검색 (시, 구, 동)
@@ -23,9 +19,13 @@
 
 ## 목표기획
 
-초점은 새로운 서비스를 만드는 것이 아니라, 기존 서비스에 기능을 보완하여 기술적 도전에 집중
-
 1. 프론트엔드 캐싱 전략을 통해 사용자 경험을 개선하고, API 호출 빈도를 최적화하여 효율적인 데이터 관리를 구현
 2. 백엔드 시스템 설계에 집중하여 데이터의 안정성과 확장성을 강화하고, 대량의 데이터를 효과적으로 처리할 수 있는 구조를 설계
 
+
+# 백엔드 최종 설계 결과물
+![image](https://github.com/user-attachments/assets/ec5fe7a2-1f37-4430-a67d-7ebf0dc9e39a)
+
+# 프론트엔드 페이지 결과물
+![image](https://github.com/user-attachments/assets/d877b998-5c33-47be-8ecd-24530d2d73b6)
 
